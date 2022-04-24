@@ -1,14 +1,14 @@
 <template>
-    <Nav />
+    <NavBar />
 </template>
 
 <script>
 
-import Nav from '@/components/Nav'
+import NavBar from '@/components/NavBar'
 export default {
   name: 'App',
   components: {
-    Nav
+    NavBar
   }
 }
 </script>

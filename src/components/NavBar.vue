@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <header class="header">
         <div class="container">
             <nav class="header__body">
                 <a class="header__logo" href="/"><img src="../assets/img/logo.svg" alt="Логотип" class="header__logo"></a>
@@ -46,7 +46,7 @@
                         </transition>
 
                         <transition name="fade">
-                            <ul class="burder" v-if="show" >
+                            <ul class="header__burger" v-if="show" >
                                 <li><a href="">постельное белье</a></li>
                                 <li><a href="">одежда для дома</a></li>
                                 <li><a href="">одежда для улицы</a></li>
@@ -80,6 +80,7 @@
         width: 100%;
         border-bottom: 1px solid #E0E0E0;
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        position: relative;
 
         &__body {
             display: flex;
@@ -116,7 +117,27 @@
         &__icons-burger {
             display: none;
             padding: 8px;
-            position: relative;
+
+            svg {
+                z-index: 3;
+            }
+        }
+
+        &__burger {
+            background: #fff;
+            z-index: 2;
+            width: 100vw;
+            position: absolute;
+            left: 0;
+            top: 0;
+            padding: 80px 0 0 30px;
+            text-transform: uppercase;
+            color: #333333;
+            font-size: 12px;
+
+            li {
+                padding: 15px 0;
+            }
         }
 
         @media screen and (max-width: 768px) { 
