@@ -1,14 +1,18 @@
 <template>
-    <NavBar />
+  <NavBar />
+  <main class="main"></main>
+  <FooterItem />
 </template>
 
 <script>
 
 import NavBar from '@/components/NavBar'
+import FooterItem from '@/components/FooterItem'
 export default {
   name: 'App',
   components: {
-    NavBar
+    NavBar,
+    FooterItem
   }
 }
 </script>

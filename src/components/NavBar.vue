@@ -82,6 +82,13 @@
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
         position: relative;
 
+        @media screen and (max-width: 768px) { 
+            & {
+                border-bottom: none;
+                box-shadow: none;
+            }
+        }
+
         &__body {
             display: flex;
             justify-content: space-between;
@@ -134,6 +141,7 @@
             text-transform: uppercase;
             color: #333333;
             font-size: 12px;
+            transition: all 0.3s;
 
             li {
                 padding: 15px 0;
@@ -143,6 +151,10 @@
         @media screen and (max-width: 768px) { 
             &__icons-burger  {
                 display: flex;
+            }
+
+            &__body {
+                padding:22px 0 30px 0;
             }
         }
     }
