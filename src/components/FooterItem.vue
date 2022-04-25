@@ -3,7 +3,7 @@
         <div class="container">
             <div class="footer__body">
                 <div class="footer__nav">
-                    <div class="footer__nav-left">
+                    <div class="footer__nav-item">
                         <h6 class="footer__title">покупателям</h6>
 
                         <ul class="footer__list">
@@ -13,7 +13,7 @@
                         </ul>
                     </div>
 
-                    <div class="footer__nav-right">
+                    <div class="footer__nav-item">
                         <h6 class="footer__title">о нас</h6>
 
                         <ul class="footer__list">
@@ -27,12 +27,18 @@
                 <div class="footer__sale">
                     <h6 class="footer__title">Узнайте первыми о новинках и акциях</h6>
 
-                    <form id="" action="#" class="footer__form">
-                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class="footer__error" v-if="errors.length">
+                        <p v-for="error in errors" :key="error">{{ error }}</p>
+                    </div>
+
+                    <form @submit="checkForm" action="https://vuejs.org/" method="post" novalidate="true"
+                    class="footer__form" id="form1">
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        @click="resetEmail">
                             <path d="M0.700012 9.06641L9.05007 0.88337" stroke="#C4C4C4"/>
                             <path d="M9.25165 9.06641L0.901606 0.883353" stroke="#C4C4C4"/>
                         </svg>
-                        <input type="text" placeholder="Адрес электронной почты" />
+                        <input type="email" v-model="email" name="email" placeholder="Адрес электронной почты" />
                         <button type="submit">Подписаться</button>
                     </form>
                 </div>
@@ -44,7 +50,36 @@
 <script>
 
 export default ({
+    data() {
+        return {
+        errors: [],
+        email: null,
+        }
+    },
+    methods: {
+    checkForm: function (e) {
+      this.errors = [];
 
+      if (!this.email) {
+        this.errors.push('Пожалуйста, укажите электронную почту');
+      } else if (!this.validEmail(this.email)) {
+        this.errors.push('Пожалуйста, укажите корректный адрес электронной почты');
+      }
+
+      if (!this.errors.length) {
+        return true;
+      }
+
+      e.preventDefault();
+    },
+    validEmail: function (email) {
+      var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    },
+    resetEmail: function () {
+        return this.email = "";
+    }
+  }
 })
 </script>
 
@@ -148,6 +183,15 @@ export default ({
             }
         }
     }
+
+        &__error {
+            margin: 5px 0;
+
+            p {
+                font-size: 14px;
+                color: #c90101;
+            }
+        }
 
 
     @media screen and (max-width: 1024px) { 
