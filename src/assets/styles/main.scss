@@ -38,11 +38,18 @@ a, h1, p, li, ul, h1, h2, h3, h4, div, h5, h6 {
 }
 
 
-.container {
+.container,
+.container__main {
     max-width: 1370px;
     margin: 0 auto;
     padding: 0 10px;
 }
+
+.container__main {
+    display: flex;
+    flex-direction: column;
+}
+
 
 .main {
     -webkit-box-flex: 1;
@@ -64,7 +71,8 @@ $main-back: #E5E5E5;
 
 
 @media screen and (max-width: 1024px) { 
-    .container {
+    .container,
+    .container__main {
         max-width: 992px;
     }
 }
@@ -72,6 +80,10 @@ $main-back: #E5E5E5;
 @media screen and (max-width: 992px) { 
     .container {
         max-width: 768px;
+    }
+
+    .container__main {
+        max-width: 100%;
     }
 }
 

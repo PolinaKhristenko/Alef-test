@@ -1,6 +1,8 @@
 <template>
   <NavBar />
-  <main class="main"></main>
+  <main class="main">
+  <PhotosBlock />
+  </main>
   <FooterItem />
 </template>
 
@@ -8,10 +10,13 @@
 
 import NavBar from '@/components/NavBar'
 import FooterItem from '@/components/FooterItem'
+import PhotosBlock from '@/components/PhotosBlock'
+
 export default {
   name: 'App',
   components: {
     NavBar,
+    PhotosBlock,
     FooterItem
   }
 }
