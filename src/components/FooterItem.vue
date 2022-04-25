@@ -181,6 +181,17 @@ export default ({
             border-right: none;
             border-bottom: 1px solid #C4C4C4;
             margin-bottom: 35px;
+            transition: all 0.3s;
+
+
+            &:hover,
+            &:active {
+                border-bottom: 1px solid #333333;
+
+                &::placeholder {
+                    color: #333333;
+                }
+            }
         }
 
         button {
@@ -242,6 +253,7 @@ export default ({
             width: 100%;
         }
     }
+
 }
 
 </style>

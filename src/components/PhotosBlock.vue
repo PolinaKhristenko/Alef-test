@@ -117,11 +117,6 @@
 
 <script>
 
-export default ({
-    setup() {
-        
-    },
-})
 </script>
 
 <style scoped lang="scss">
@@ -147,6 +142,11 @@ export default ({
                 -ms-grid-row-align: center;
                 align-self: center;
             margin: 28px 0;
+
+            &:hover,
+            &:active {
+                opacity: 0.7;
+            }
         }
 
         &__main {
