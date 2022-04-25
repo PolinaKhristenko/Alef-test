@@ -116,7 +116,6 @@
 </template>
 
 <script>
-// import { defineComponent } from '@vue/composition-api'
 
 export default ({
     setup() {
@@ -126,11 +125,14 @@ export default ({
 </script>
 
 <style scoped lang="scss">
-    .photos {
+    
+.photos {
 
         margin-bottom: 130px;
 
         &__body {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
             gap: 16px;
         }
@@ -138,9 +140,12 @@ export default ({
         &__styles {
             font-size: 14px;
             line-height: 20px;
-            text-decoration-line: underline;
+            -webkit-text-decoration-line: underline;
+                    text-decoration-line: underline;
             color: #333333;
-            align-self: center;
+            -ms-flex-item-align: center;
+                -ms-grid-row-align: center;
+                align-self: center;
             margin: 28px 0;
         }
 
@@ -152,7 +157,8 @@ export default ({
             position: relative; 
             
             img {
-                object-fit: cover;
+                -o-object-fit: cover;
+                   object-fit: cover;
                 max-width: 686px;
                 max-height: 688px;
             }
@@ -166,13 +172,21 @@ export default ({
             top: 0;
             width: 100%;
             height: 100%;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            justify-content: center;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
             font-size: 14px;
             line-height: 20px;
             color: #FFFFFF;
             z-index: 2;
-            align-items: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            -webkit-transition: all 0.3s;
+            -o-transition: all 0.3s;
             transition: all 0.3s;
 
             &:hover,
@@ -191,10 +205,19 @@ export default ({
 
         &__hover-center {
             text-align: center;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
             z-index: 3;
             height: 100%;
 
@@ -206,13 +229,17 @@ export default ({
         }
 
         &__hover-cart {
-            align-self: center;
+            -ms-flex-item-align: center;
+                -ms-grid-row-align: center;
+                align-self: center;
             margin-top: auto;
         }
 
         &__all {
+            display: -ms-grid;
             display: grid;
             gap: 16px;
+            -ms-grid-columns: 1fr 16px 1fr;
             grid-template-columns: 1fr 1fr;
         }
 
@@ -222,25 +249,34 @@ export default ({
             img {
                 max-width: 335px;
                 max-height: 336px;
-                object-fit: cover;
+                -o-object-fit: cover;
+                   object-fit: cover;
             }
         }
 
 
         &__hover-like {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            align-items: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
             margin-bottom: 16px;
             margin-top: auto;
 
             img {
+                -webkit-transition: all 0.3s;
+                -o-transition: all 0.3s;
                 transition: all 0.3s;
                 margin-right: 6px;
                 max-height: 16px;
                 max-width: 16px;
 
                 &:hover {
-                    transform: scale(1.3, 1.3);
+                    -webkit-transform: scale(1.3, 1.3);
+                        -ms-transform: scale(1.3, 1.3);
+                            transform: scale(1.3, 1.3);
                 }
             }
         }
@@ -248,7 +284,10 @@ export default ({
 
         @media screen and (max-width: 768px) { 
             &__body {
-                flex-direction: column;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                    -ms-flex-direction: column;
+                        flex-direction: column;
             }
 
             &__body {

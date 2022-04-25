@@ -76,23 +76,31 @@
 
 <style scoped lang="scss">
 
-    .header {
+ .header {
         width: 100%;
         border-bottom: 1px solid #E0E0E0;
-        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+                box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
         position: relative;
 
         @media screen and (max-width: 768px) { 
             & {
                 border-bottom: none;
-                box-shadow: none;
+                -webkit-box-shadow: none;
+                        box-shadow: none;
             }
         }
 
         &__body {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            -webkit-box-pack: justify;
+                -ms-flex-pack: justify;
+                    justify-content: space-between;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
             padding: 8px 0 12px 0;
         }
 
@@ -102,9 +110,13 @@
         }
 
         &__icons {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
             gap: 24px;
-            align-items: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
             
         }
         
@@ -112,6 +124,8 @@
             padding: 8px;
 
             svg {
+            -webkit-transition: all 0.3s;
+            -o-transition: all 0.3s;
             transition: all 0.3s;
             }
 
@@ -141,6 +155,8 @@
             text-transform: uppercase;
             color: #333333;
             font-size: 12px;
+            -webkit-transition: all 0.3s;
+            -o-transition: all 0.3s;
             transition: all 0.3s;
 
             li {
@@ -150,6 +166,8 @@
 
         @media screen and (max-width: 768px) { 
             &__icons-burger  {
+                display: -webkit-box;
+                display: -ms-flexbox;
                 display: flex;
             }
 
@@ -161,13 +179,14 @@
 
     .fade-enter-active,
     .fade-leave-active {
+        -webkit-transition: opacity 0.3s ease;
+        -o-transition: opacity 0.3s ease;
         transition: opacity 0.3s ease;
-        }
+    }
 
     .fade-enter,
     .fade-leave-to {
         opacity: 0;
-        }
-
+    }
 
 </style>

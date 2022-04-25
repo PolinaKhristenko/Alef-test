@@ -90,6 +90,8 @@ export default ({
     margin-bottom: 70px;
 
     &__body {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         max-width: 1099px;
         margin: 0 auto;
@@ -97,8 +99,12 @@ export default ({
 
     &__nav {
         color: #333333;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        justify-content: space-between;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
         gap: 290px;
     }
 
@@ -119,8 +125,13 @@ export default ({
     }
 
     &__list {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
         gap: 8px;
     }
 
@@ -128,6 +139,8 @@ export default ({
         font-size: 14px;
         line-height: 20px;
         letter-spacing: 0.04em;
+        -webkit-transition: all 0.3s;
+        -o-transition: all 0.3s;
         transition: all 0.3s;
 
         &:hover,
@@ -148,6 +161,8 @@ export default ({
         svg {
             position: absolute;
             cursor: pointer;
+            -webkit-transition: all 0.3s;
+            -o-transition: all 0.3s;
             transition: all 0.3s;
             right: 14px;
             top: 8px;
@@ -209,11 +224,16 @@ export default ({
     @media screen and (max-width: 768px) { 
         &__nav {
             gap: 0;
-            justify-content: space-between;
+            -webkit-box-pack: justify;
+                -ms-flex-pack: justify;
+                    justify-content: space-between;
         }
 
         &__body {
-            flex-direction: column;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
         }
 
         &__sale {
