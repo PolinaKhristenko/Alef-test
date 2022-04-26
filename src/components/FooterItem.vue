@@ -261,6 +261,10 @@ export default ({
             margin-left: 0;
             width: 100%;
         }
+
+        & {
+            margin-bottom: 186px;
+        }
     }
 
 }

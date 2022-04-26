@@ -47,7 +47,8 @@
 
                     <form action="#" class="product__select" id="form2">
                         <div class="select__wrapper">
-                            <button class="select__button" type="button" @click="addClass" :class="{'active': isAddClass}">
+                            <button class="select__button" type="button" @click="addClass" 
+                            :class="{'active': isAddClass}">
                                 <span class="select__button-txt">
                                     {{ size }}
                                 </span>
@@ -57,7 +58,7 @@
                                     </svg>                          
                                 </div>
                             </button>
-                            <div class="select__dropdown">
+                            <div class="select__dropdown"> 
                                 <ul class="select__list">
                                     <li class="select__point">
                                         <label for="" class="select__point-label">
@@ -152,7 +153,6 @@ export default ({
     data() {
           return {
             isAddClass: false,
-            isChecked: false,
             size: "Выбрать размер",
             quantity: 1,
             productTitle: ['Пижама для девочек', ],
@@ -165,8 +165,9 @@ export default ({
             ],
           }
     },
-    methods: {
 
+    methods: {
+        
         // Замена главного фото
 
         changePhoto: function (event) {
@@ -211,7 +212,7 @@ export default ({
                 return this.infoMessage;             
             }
         },
-    }
+    },
 });
 </script>
 
@@ -222,17 +223,25 @@ export default ({
 
 
         &__body {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
             gap: 36px;
         }
 
         &__left {
+            position: relative;
+
             &-main {
-                position: relative;
+                overflow: hidden;
+                width: 686px;
+                height: auto;
 
                 img {
-                    width: 686px;
-                    height: 878px;
+                    width: 100%;
+                    height: 100%;
+                    -o-object-fit: cover;
+                       object-fit: cover;
                 }
             }
 
@@ -240,9 +249,16 @@ export default ({
                 z-index: 2;
                 width: 70px;
                 height: 91px;
+                display: -webkit-box;
+                display: -ms-flexbox;
                 display: flex;
-                flex-direction: column;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                    -ms-flex-direction: column;
+                        flex-direction: column;
                 cursor: pointer;
+                -webkit-transition: all 0.3s;
+                -o-transition: all 0.3s;
                 transition: all 0.3s;
 
                 &:hover,
@@ -254,17 +270,27 @@ export default ({
 
             &-all {
                 position: absolute;
-                top: 15%;
+                top: 5%;
                 left: 5%;
+                display: -webkit-box;
+                display: -ms-flexbox;
                 display: flex;
-                flex-direction: column;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                    -ms-flex-direction: column;
+                        flex-direction: column;
                 gap: 7px;
             }
         }
 
         &__right {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            flex-direction: column;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
         }
 
         &__title {
@@ -278,15 +304,21 @@ export default ({
         &__article {
             font-size: 12px;
             line-height: 16px;
-            align-items: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
             letter-spacing: 0.04em;
             color: #828282;
             margin-bottom: 8px;
         }
 
         &__reviews {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            align-items: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
             margin-bottom: 30px;
 
             p {
@@ -300,8 +332,12 @@ export default ({
                 font-size: 14px;
                 line-height: 20px;
                 color: #333333;
+                display: -webkit-box;
+                display: -ms-flexbox;
                 display: flex;
-                align-items: center;
+                -webkit-box-align: center;
+                    -ms-flex-align: center;
+                        align-items: center;
                 gap: 4px;
                 margin-left: 4px;
             }
@@ -312,9 +348,13 @@ export default ({
         }
 
         &__price  {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
             gap: 12px;
-            align-items: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
             margin-bottom: 8px;
         }
 
@@ -329,11 +369,14 @@ export default ({
         &__price-old {
             font-size: 14px;
             line-height: 20px;
-            text-decoration-line: line-through;
+            -webkit-text-decoration-line: line-through;
+                    text-decoration-line: line-through;
             color: #828282;
         }
 
         &__sale {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
             gap: 9px;
             margin-bottom: 20px;
@@ -343,14 +386,21 @@ export default ({
             border: 1px solid #333333;
             font-size: 12px;
             line-height: 16px;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            align-items: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
             letter-spacing: 0.04em;
             color: #333333;
             padding: 4px 8px;
             display: flex;
-            justify-content: center;
-            align-content: center;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            -ms-flex-line-pack: center;
+                align-content: center;
         }
 
         &__select {
@@ -372,8 +422,12 @@ export default ({
             &__button  {
                 border: 1px solid #333333;
                 padding: 12px 16px;
+                display: -webkit-box;
+                display: -ms-flexbox;
                 display: flex;
-                justify-content: space-between;
+                -webkit-box-pack: justify;
+                    -ms-flex-pack: justify;
+                        justify-content: space-between;
                 background: #fff;
                 font-size: 14px;
                 line-height: 20px;
@@ -398,19 +452,28 @@ export default ({
 
             &__button-arrow {
                 svg {
+                    -webkit-transition: all 0.3s;
+                    -o-transition: all 0.3s;
                     transition: all 0.3s;
                 }
             }
 
             &__dropdown {
                 opacity: 0;
-                transform: scaleY(0);
+                -webkit-transform: scaleY(0);
+                    -ms-transform: scaleY(0);
+                        transform: scaleY(0);
                 position: relative;
             }
 
             &__list {
+                display: -webkit-box;
+                display: -ms-flexbox;
                 display: flex;
-                flex-direction: column;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                    -ms-flex-direction: column;
+                        flex-direction: column;
                 width: 315px;
                 position: absolute;
                 top: 2px;
@@ -421,11 +484,18 @@ export default ({
             }
 
             &__point {
+                display: -webkit-box;
+                display: -ms-flexbox;
                 display: flex;
-                flex-direction: column;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                    -ms-flex-direction: column;
+                        flex-direction: column;
                 width: 100%;
                 padding: 6px 12px;
                 position: relative;
+                -webkit-transition: all 0.1s;
+                -o-transition: all 0.1s;
                 transition: all 0.1s;
 
                 &:hover,
@@ -437,6 +507,8 @@ export default ({
 
             &__point-label {
                 cursor: pointer;
+                display: -webkit-box;
+                display: -ms-flexbox;
                 display: flex;
                 width: 100%;
             }
@@ -461,18 +533,33 @@ export default ({
 
         &__buy {
 
+            display: -webkit-box;
+
+            display: -ms-flexbox;
+
             display: flex;
             margin: 40px 0 6px 0;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+            gap: 8px;
 
             &-quantity {
+                max-width: 145px;
+                max-height: 50px;
+                display: -webkit-box;
+                display: -ms-flexbox;
                 display: flex;
                 font-size: 14px;
                 line-height: 20px;
                 letter-spacing: 0.04em;
                 color: #333333;
                 background: #F2F2F2;
-                align-items: center;
-                justify-content: center;
+                -webkit-box-align: center;
+                    -ms-flex-align: center;
+                        align-items: center;
+                -webkit-box-pack: center;
+                    -ms-flex-pack: center;
+                        justify-content: center;
                 gap: 20px;
             }
 
@@ -493,7 +580,6 @@ export default ({
 
             &-cart {
                 padding: 12px 28px;
-                margin-left: 12px;
             }
 
             &-fav {
@@ -504,11 +590,14 @@ export default ({
 
         &__underlined {
             margin-bottom: 10px;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
             gap: 4px;
             font-size: 14px;
             line-height: 20px;
-            text-decoration-line: underline;
+            -webkit-text-decoration-line: underline;
+                    text-decoration-line: underline;
             color: #333333;
 
             &:hover,
@@ -525,18 +614,75 @@ export default ({
             padding-top: 20px;
             border-bottom: 0.5px solid #C4C4C4;
             margin-bottom: 20px;
-            width: 686px;
+            width: 100%;
+        }
+
+        @media screen and (max-width: 1100px) { 
+            &__body {
+                gap: 15px
+            }
+
+        }
+
+
+        @media screen and (max-width: 1024px) { 
+            &__buy {
+                margin-top: 0;
+            }
+
+
+            &__left-main {
+                width: 100%;
+                height: auto;
+            }
+
+            &__buy-cart {
+                margin-left: 0;
+            }
+
+        }
+
+
+        @media screen and (max-width: 768px) { 
+            &__body {
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                    -ms-flex-direction: column;
+                        flex-direction: column;
+            }
+
+            &__line {
+                width: 100vw;
+                margin-left: -20px;
+            }
+
+            &__right {
+                margin-left: 20px;
+            }
+
+            &__buy {
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                    -ms-flex-direction: column;
+                        flex-direction: column;
+                margin-top: 40px;
+            }
+
         }
         
 }
 
         .select__button.active + div{
-            transform: scaleY(1);
+            -webkit-transform: scaleY(1);
+                -ms-transform: scaleY(1);
+                    transform: scaleY(1);
             opacity: 1;
         }
 
         .select__button.active :nth-child(2) svg{
-            transform: rotateZ(360deg) scaleY(-1);
+            -webkit-transform: rotateZ(360deg) scaleY(-1);
+                -ms-transform: rotate(360deg) scaleY(-1);
+                    transform: rotateZ(360deg) scaleY(-1);
             opacity: 1;
         }
 
@@ -554,12 +700,23 @@ export default ({
             font-size: 14px;
             line-height: 20px;
             color: #FFFFFF;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
             margin-right: 4px;
+            width: -webkit-fit-content;
+            width: -moz-fit-content;
+            width: fit-content;
 
             svg path {
+                -webkit-transition: stroke 0.3s;
+                -o-transition: stroke 0.3s;
                 transition: stroke 0.3s;
             }
 

@@ -58,14 +58,6 @@ a, h1, p, li, ul, h1, h2, h3, h4, div, h5, h6 {
 }
 
 
-// Colors
-
-
-$text-black: #333333;
-$text-gray: #828282;
-$main-back: #E5E5E5;
-
-
 //  Adaptive
 
 
@@ -78,16 +70,20 @@ $main-back: #E5E5E5;
 }
 
 @media screen and (max-width: 992px) { 
-    .container {
+    .container,
+    .container__main {
         max-width: 768px;
     }
 
-    .container__main {
-        max-width: 100%;
-    }
 }
 
 @media screen and (max-width: 768px) { 
+
+    .container__main {
+        max-width: 100%;
+        padding: 0;
+    }
+
     .container {
         max-width: 576px;
     }

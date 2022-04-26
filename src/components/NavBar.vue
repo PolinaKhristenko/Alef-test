@@ -84,7 +84,7 @@ const scrollOffset = 80;
             window.addEventListener('scroll', this.onScroll);
         },
 
-        beforeDestroy () {
+        beforeUnmount () {
             window.removeEventListener('scroll', this.onScroll);
         },
 
@@ -94,10 +94,10 @@ const scrollOffset = 80;
             onScroll() {
                 if (window.pageYOffset < 0) {
                     return
-                };
+                }
                 if (Math.abs(window.pageYOffset - this.lastScrollPosition) < scrollOffset) {
                     return
-                };
+                }
                 this.showNavbar = window.pageYOffset < this.lastScrollPosition;
                 this.lastScrollPosition = window.pageYOffset;
             }
@@ -120,6 +120,8 @@ const scrollOffset = 80;
         z-index: 3;
         transform: translate3d(0, 0, 0);
         transition: 0.3s all ease-out;
+        display: flex;
+        align-items: center;
 
         &__relative {
             position: relative;
@@ -144,7 +146,6 @@ const scrollOffset = 80;
             -webkit-box-align: center;
                 -ms-flex-align: center;
                     align-items: center;
-            padding: 8px 0 12px 0;
         }
 
         &__logo {
@@ -198,9 +199,9 @@ const scrollOffset = 80;
             text-transform: uppercase;
             color: #333333;
             font-size: 12px;
-            -webkit-transition: all 0.3s;
-            -o-transition: all 0.3s;
-            transition: all 0.3s;
+            -webkit-transition: all 0.1s;
+            -o-transition: all 0.1s;
+            transition: all 0.1s;
 
             li {
                 padding: 15px 0;
@@ -214,8 +215,8 @@ const scrollOffset = 80;
                 display: flex;
             }
 
-            &__body {
-                padding:22px 0 30px 0;
+            & {
+                height: 68px;
             }
         }
     }

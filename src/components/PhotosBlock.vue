@@ -155,12 +155,14 @@
 
         &__main-photo {
             position: relative; 
+            max-width: 686px;
+            max-height: 688px;
             
             img {
                 -o-object-fit: cover;
                    object-fit: cover;
-                max-width: 686px;
-                max-height: 688px;
+                max-width: 100%;
+                max-height: 100%;
             }
         }
 
@@ -245,10 +247,12 @@
 
         &__item {
             position: relative;
+            max-width: 335px;
+            max-height: 336px;
 
             img {
-                max-width: 335px;
-                max-height: 336px;
+                max-width: 100%;
+                max-height: 100%;
                 -o-object-fit: cover;
                    object-fit: cover;
             }
@@ -288,6 +292,7 @@
                 -webkit-box-direction: normal;
                     -ms-flex-direction: column;
                         flex-direction: column;
+                align-items: center;
             }
 
             &__body {
@@ -299,7 +304,7 @@
             }
 
             &__styles {
-                margin: 58pxx 0;
+                margin: 58px 0;
             }
 
             & {
