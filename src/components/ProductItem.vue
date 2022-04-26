@@ -3,21 +3,33 @@
         <div class="container__main">
             <div class="product__body">
                 <div class="product__left">
+                    <div class="product__left-main">
+                        <img :src='productPhoto' :key="productPhoto" alt="Фото с товаром" />
+                    </div>
+
+                    <div class="product__left-all">
+                        <img @click="changePhoto($event)" src="../assets/img/product1.png" id="0"
+                        class="product__left-item" alt="Фото с товаром" >
+                        <img @click="changePhoto($event)" src="../assets/img/product2.png" id="1"
+                        class="product__left-item" alt="Фото с товаром">
+                        <img @click="changePhoto($event)"  src="../assets/img/product3.png" id="2"
+                        class="product__left-item" alt="Фото с товаром">
+                    </div>
                 </div>
 
                 <div class="product__right">
                     <h1 class="product__title" v-for="title in productTitle" :key="title">{{ title }}</h1>
                     <p class="product__article">Арт. 02765/46</p>
 
-                    <div class="product__reviews">
+                    <a href="" class="product__reviews">
                         <p class="product__reviews-txt">Отзывы</p>
                         <img src="../assets/img/rating.svg" alt="Звёзды рейтинга">
-                        <a href=""> 14 отзывов 
+                        <div href=""> 14 отзывов 
                             <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M1 1L9 8L1 14.5" stroke="#333333"/>
                             </svg>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
 
                     <div class="product__price">
                         <p class="product__price-actual">800 ₽</p>
@@ -83,16 +95,27 @@
 
                     <a href="" class="product__underlined">Определить размер</a>
 
+                    <p :key="infoMessage" class="product__message"> {{ infoMessage }}</p>
+
                     <div class="product__buy">
+
                         <div class="product__buy-quantity">
-                            <div class="product__buy-change" @click="quantity++">+</div>
+                            <div class="product__buy-change" @click="quantity++">
+                                <svg width="9" height="20" viewBox="0 0 9 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4.46387 9.59277H7.28027V10.5361H4.46387V13.4482H3.51367V10.5361H0.710938V9.59277H3.51367V6.66699H4.46387V9.59277Z" fill="#333333"/>
+                                    </svg>
+                                </div>
                             <div class="product__buy-num">{{ quantity }} </div>
-                            <div class="product__buy-change" @click="quantity--">-</div>
+                            <div class="product__buy-change" @click="quantity--">
+                                <svg width="7" height="20" viewBox="0 0 7 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0.560547 11.7666V10.7275H6.43945V11.7666H0.560547Z" fill="#333333"/>
+                                </svg>
+                            </div>
                         </div>
 
-                        <button type="button" class="product__buy-cart">Добавить в корзину</button>
+                        <button type="button" class="product__buy-cart black-btn" @click="cartMessage" >Добавить в корзину</button>
 
-                        <button type="button" class="product__buy-fav">
+                        <button type="button" class="product__buy-fav black-btn" @click="favMessage">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M7.90002 3.0948C6.69981 -2.52108 -2.59119 1.90389 1.76037 7.60175C6.11193 13.2996 8.40002 15.4908 8.40002 15.4908" stroke="white"/>
                                 <path d="M7.89415 3.0948C9.09435 -2.52108 18.7304 1.90389 14.3789 7.60175C10.0273 13.2996 7.70001 15.5 7.70001 15.5" stroke="white"/>
@@ -133,17 +156,61 @@ export default ({
             size: "Выбрать размер",
             quantity: 1,
             productTitle: ['Пижама для девочек', ],
+            infoMessage: "",
+            productPhoto: require("../assets/img/product1.png"),
+            photos: [
+                {img: require("../assets/img/product1.png")},
+                {img: require("../assets/img/product2.png")},
+                {img: require("../assets/img/product3.png")},
+            ],
           }
     },
     methods: {
-        addClass: function() {
-        this.isAddClass = !this.isAddClass;
+
+        // Замена главного фото
+
+        changePhoto: function (event) {
+            let targetId = event.currentTarget.id;
+            this.productPhoto = this.photos[targetId].img;
         },
+
+        // Переключатель класса 'active'
+
+        addClass: function() {
+            this.isAddClass = !this.isAddClass;
+        },
+
+        // Селект с размерами
+
         checkValue: function() {
             if (this.size) {
                 return this.size;
             }
-        }
+        },
+
+        // Добавление в "Избранное"
+
+        favMessage: function() {
+            if (this.quantity > 0) {
+                this.infoMessage = "Товар '" + this.productTitle + "' в количестве '" + this.quantity + "' единиц добавлен в избранное"
+                return this.infoMessage;  
+            } else {
+                this.infoMessage = "Пожалуйста, укажите количество"
+                return this.infoMessage;  
+            }
+        },
+
+        // Добавление в корзину
+
+        cartMessage: function() {
+            if (this.quantity > 0) {
+                this.infoMessage = "Товар '" + this.productTitle + "' в количестве '" + this.quantity + "' единиц добавлен в корзину"
+                return this.infoMessage;
+            } else {
+                this.infoMessage = "Пожалуйста, укажите количество"
+                return this.infoMessage;             
+            }
+        },
     }
 });
 </script>
@@ -151,7 +218,8 @@ export default ({
 <style scoped lang="scss">
     .product {
 
-        margin-top: 20px;
+        margin-top: 70px;
+
 
         &__body {
             display: flex;
@@ -159,7 +227,39 @@ export default ({
         }
 
         &__left {
+            &-main {
+                position: relative;
 
+                img {
+                    width: 686px;
+                    height: 878px;
+                }
+            }
+
+            &-item {
+                z-index: 2;
+                width: 70px;
+                height: 91px;
+                display: flex;
+                flex-direction: column;
+                cursor: pointer;
+                transition: all 0.3s;
+
+                &:hover,
+                &:active {
+                    opacity: 0.7;
+                }
+
+            }
+
+            &-all {
+                position: absolute;
+                top: 15%;
+                left: 5%;
+                display: flex;
+                flex-direction: column;
+                gap: 7px;
+            }
         }
 
         &__right {
@@ -196,7 +296,7 @@ export default ({
                 margin-right: 12px;
             }
 
-            a {
+            div {
                 font-size: 14px;
                 line-height: 20px;
                 color: #333333;
@@ -253,8 +353,11 @@ export default ({
             align-content: center;
         }
 
+        &__select {
+            margin: 6px 0;
+        }
+
         .select {
-            margin-bottom: 6px;
 
             &__wrapper {
 
@@ -348,6 +451,57 @@ export default ({
 
         }
 
+        &__message {
+            font-size: 12px;
+            line-height: 20px;
+            letter-spacing: 0.04em;
+            color: #c90101;
+            height: 6px;
+        }
+
+        &__buy {
+
+            display: flex;
+            margin: 40px 0 6px 0;
+
+            &-quantity {
+                display: flex;
+                font-size: 14px;
+                line-height: 20px;
+                letter-spacing: 0.04em;
+                color: #333333;
+                background: #F2F2F2;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+            }
+
+            &-change {
+                cursor: pointer;
+                padding: 12px 20px;
+
+                &:hover,
+                &:active {
+                    background: #a6a6a6;
+                }
+
+            }
+
+            &-num {
+                padding: 12px 0;
+            }
+
+            &-cart {
+                padding: 12px 28px;
+                margin-left: 12px;
+            }
+
+            &-fav {
+                padding: 14px;
+            }
+
+        }
+
         &__underlined {
             margin-bottom: 10px;
             display: flex;
@@ -392,6 +546,33 @@ export default ({
             height: 100%;
             width: 100%;
             cursor: pointer;
+        }
+
+        .black-btn {
+            background: #333333;
+            border: 1px solid #333333;
+            font-size: 14px;
+            line-height: 20px;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 4px;
+
+            svg path {
+                transition: stroke 0.3s;
+            }
+
+            &:hover,
+            &:active {
+                color:#333333;
+                background: #fff;
+                border-color: transparent;
+
+                svg path {
+                    stroke: #333333;
+                }
+            }
         }
 
 </style>

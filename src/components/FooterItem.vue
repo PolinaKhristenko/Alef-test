@@ -56,14 +56,19 @@ export default ({
         email: null,
         }
     },
+
     methods: {
+
+    // Валидация почты, вывод ошибки
+
     checkForm: function (e) {
+
       this.errors = [];
 
       if (!this.email) {
-        this.errors.push('Пожалуйста, укажите электронную почту');
+            this.errors.push('Пожалуйста, укажите электронную почту');
       } else if (!this.validEmail(this.email)) {
-        this.errors.push('Пожалуйста, укажите корректный адрес электронной почты');
+            this.errors.push('Пожалуйста, укажите корректный адрес электронной почты');
       }
 
       if (!this.errors.length) {
@@ -72,10 +77,12 @@ export default ({
 
       e.preventDefault();
     },
+
     validEmail: function (email) {
       var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
     },
+
     resetEmail: function () {
         return this.email = "";
     }
@@ -157,6 +164,7 @@ export default ({
     &__form {
         width: 100%;
         position: relative;
+        margin-top: 10px;
 
         svg {
             position: absolute;
@@ -212,10 +220,11 @@ export default ({
 
         &__error {
             margin: 5px 0;
+            height: 6px;
 
             p {
-                font-size: 14px;
-                color: #c90101;
+                font-size: 12px;
+                color: #c90101;            
             }
         }
 
