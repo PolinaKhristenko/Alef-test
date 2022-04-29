@@ -1,4 +1,20 @@
-# alef-test
+# Alef-test (Vue.js, SCSS)
+
+Responsive Vue.js based Web page with some functionality. CSS preprocessor used (SCSS).
+
+Main requirements:
+
+- Email validation 
+- Adding an item to the cart/fav should trigger a confirmation message
+- Click on a smaller photos switch the item's main photo
+- + and - change the quantity
+- Click on burger menu opens nav and closes respectively (mobile version)
+- Header is fixed. Scrolling down makes it disappear, scrolling up makes it appear again.
+- Responsive layout
+- Vue.js
+- All the links states should be used 
+
+
 
 ## Project setup
 ```
