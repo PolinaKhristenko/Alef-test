@@ -2,6 +2,9 @@
 
 Responsive Vue.js based Web page with some functionality. CSS preprocessor used (SCSS).
 
+
+<img width="788" alt="Screenshot 2022-07-07 at 20 34 27" src="https://user-images.githubusercontent.com/88159970/177835096-58163512-ca3d-4478-bbb4-d2f38fa4e7ad.png">
+
 Main requirements:
 
 - Email validation 
